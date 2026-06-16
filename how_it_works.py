@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import streamlit as st
+
+_ARCH_DIAGRAM = Path(__file__).resolve().parent / "sous_architecture_preview.png"
 
 STACK = [
     ("Streamlit", "Web UI, chat, file upload, hosting"),
@@ -21,44 +25,14 @@ def _render_architecture() -> None:
         "no separate backend server."
     )
 
-    row1 = st.columns([3, 0.4, 3, 0.4, 3], gap="small")
-    with row1[0]:
-        with st.container(border=True):
-            st.markdown("**① You**")
-            st.caption("Type ingredients or attach a fridge photo in chat.")
-    row1[1].markdown("### →")
-    with row1[2]:
-        with st.container(border=True):
-            st.markdown("**② Streamlit UI**")
-            st.caption("Shows chat, stores conversation history in the session.")
-    row1[3].markdown("### →")
-    with row1[4]:
-        with st.container(border=True):
-            st.markdown("**③ LangChain agent**")
-            st.caption("`create_agent` + personal-chef system prompt.")
-
-    st.markdown("")
-
-    row2 = st.columns([3, 0.4, 3, 0.4, 3], gap="small")
-    with row2[0]:
-        with st.container(border=True):
-            st.markdown("**④ LLM (pick in sidebar)**")
-            st.markdown("- Gemini (text + photos)\n- Groq text\n- Groq vision")
-    row2[1].markdown("### ↔")
-    with row2[2]:
-        with st.container(border=True):
-            st.markdown("**⑤ Tavily tool** *(optional)*")
-            st.caption("`web_search` — finds real recipes on the web when enabled.")
-    row2[3].markdown("### →")
-    with row2[4]:
-        with st.container(border=True):
-            st.markdown("**⑥ Reply**")
-            st.caption("Agent returns recipe ideas or step-by-step instructions.")
-
-    st.info(
-        "**Model agnostic:** the agent code stays the same — only the model name "
-        "in the sidebar changes (Gemini or Groq)."
-    )
+    if _ARCH_DIAGRAM.is_file():
+        st.image(
+            str(_ARCH_DIAGRAM),
+            use_container_width=True,
+            caption="Sous — LangChain ReAct agent inside Streamlit",
+        )
+    else:
+        st.warning("Architecture diagram not found (`sous_architecture_preview.png`).")
 
 
 def _render_turn_one() -> None:

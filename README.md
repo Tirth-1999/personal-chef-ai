@@ -69,6 +69,7 @@ TAVILY_API_KEY = "your-tavily-key"
 personal-chef-ai/
 ├── app.py              # Main Streamlit app (entry point)
 ├── how_it_works.py     # Architecture page
+├── sous_architecture_preview.png
 ├── requirements.txt    # Python dependencies
 ├── example.env         # Key template (safe to commit)
 ├── .streamlit/
