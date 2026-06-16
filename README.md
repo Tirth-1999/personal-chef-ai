@@ -15,7 +15,7 @@ Built as a portfolio project from the [LangChain Academy](https://academy.langch
 ## Run locally
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/personal-chef-ai.git
+git clone https://github.com/Tirth-1999/personal-chef-ai.git
 cd personal-chef-ai
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
