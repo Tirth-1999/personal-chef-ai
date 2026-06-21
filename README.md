@@ -4,6 +4,10 @@ A LangChain agent that suggests recipes from your leftovers, searches the web wi
 
 Built as a portfolio project from the [LangChain Academy](https://academy.langchain.com/) Introduction to LangChain course.
 
+## Architecture
+
+![Sous architecture — LangChain ReAct agent inside Streamlit](sous_architecture_preview.png)
+
 ## Features
 
 - Chat with a personal chef agent (`create_agent`)
